@@ -1,29 +1,17 @@
 # Inmobiliaria-API
-Una api sencilla creada con  node.js || express || mysql
 
-```JS
+Una api sencilla creada con node.js || express || mysql
 
+# 1 Instalar dependencias con 'npm install'
 
-// solicitudes http || ./router
-propiedadesRouter.get('/',getAllPropiedadesController,getPropiedad);
-propiedadesRouter.get('/:id') = EgetIdPropiedadesController,getPropiedad);
-propiedadesRouter.post('/agregar',getAddSolvedController);
-propiedadesRouter.patch('/:id',patchPropiedadController);: 
-propiedadesRouter.delete('/:id',deletePropiedadController);
+# 2 CREAR LA DB
 
-```
+- El archivo propiedades.sql crea la base de datos mysql (ejecutarlo)
 
-* '/' = Esta solicitud HTTP obtiene todas las propiedades mediante el uso del controlador getAllPropiedadesController. Luego, la solicitud envía una respuesta utilizando el controlador getPropiedad.
-
-* get('/:id') = Esta solicitud HTTP obtiene una propiedad específica mediante el uso del controlador getIdPropiedadesController. Luego, la solicitud envía una respuesta utilizando el controlador getPropiedad.
-
-* '/agregar' = Esta solicitud HTTP agrega una nueva propiedad utilizando el controlador getAddSolvedController.
-
-* patch('/:id') = Esta solicitud HTTP actualiza una propiedad existente mediante el uso del controlador patchPropiedadController.
-
-* delete('/:id') = Esta solicitud HTTP elimina una propiedad existente mediante el uso del controlador deletePropiedadController.
+# 3 Conecta el servidor con la db:
 
 # DB || models/db.js
+
 ```JS
 export const connection = mysql.createConnection({
     host: 'localhost',
@@ -42,8 +30,39 @@ connection.connect((error) => {
 });
 ```
 
-* Este código establece una conexión a una base de datos local MySQL. Utiliza la biblioteca "mysql" de JavaScript para crear una conexión con los detalles de la base de datos, como la dirección del servidor, el usuario, la contraseña y el nombre de la base de datos.
+- Este código establece una conexión a una base de datos local MySQL. Utiliza la biblioteca "mysql" de JavaScript para crear una conexión con los detalles de la base de datos, como la dirección del servidor, el usuario, la contraseña y el nombre de la base de datos.
 
-* La primera sección define la información de la base de datos local. Se establece una conexión con la base de datos MySQL usando los detalles definidos en el objeto "connection". Esto incluye el nombre de host, el usuario, la contraseña y el nombre de la base de datos.
+- La primera sección define la información de la base de datos local. Se establece una conexión con la base de datos MySQL usando los detalles definidos en el objeto "connection". Esto incluye el nombre de host, el usuario, la contraseña y el nombre de la base de datos.
 
-* La segunda sección establece la conexión a la base de datos utilizando la función "connect" proporcionada por la biblioteca MySQL. Si la conexión es exitosa, se imprimirá un mensaje de éxito en la consola; de lo contrario, se imprimirá un mensaje de error.
+- La segunda sección establece la conexión a la base de datos utilizando la función "connect" proporcionada por la biblioteca MySQL. Si la conexión es exitosa, se imprimirá un mensaje de éxito en la consola; de lo contrario, se imprimirá un mensaje de error.
+
+# 4 Poner esta ruta en un navegador, Postman, o Thunder Client (VSC):
+
+http://localhost:3001/propiedades/
+
+- Esta debe mostrar todas las propiedades almacenadas en la db.
+- Agregandole 'agregar' a la ruta, es posible agregar otro inmueble.
+- Agregando el id a la ruta principal, es posible ver un inmueble en particular, modificar los datos de un inmueble, o borrar tal inmueble.
+
+# Otros detalles...
+
+```JS
+
+// solicitudes http || ./router
+propiedadesRouter.get('/',getAllPropiedadesController,getPropiedad);
+propiedadesRouter.get('/:id') = EgetIdPropiedadesController,getPropiedad);
+propiedadesRouter.post('/agregar',getAddSolvedController);
+propiedadesRouter.patch('/:id',patchPropiedadController);:
+propiedadesRouter.delete('/:id',deletePropiedadController);
+
+```
+
+- '/' = Esta solicitud HTTP obtiene todas las propiedades mediante el uso del controlador getAllPropiedadesController. Luego, la solicitud envía una respuesta utilizando el controlador getPropiedad.
+
+- get('/:id') = Esta solicitud HTTP obtiene una propiedad específica mediante el uso del controlador getIdPropiedadesController. Luego, la solicitud envía una respuesta utilizando el controlador getPropiedad.
+
+- '/agregar' = Esta solicitud HTTP agrega una nueva propiedad utilizando el controlador getAddSolvedController.
+
+- patch('/:id') = Esta solicitud HTTP actualiza una propiedad existente mediante el uso del controlador patchPropiedadController.
+
+- delete('/:id') = Esta solicitud HTTP elimina una propiedad existente mediante el uso del controlador deletePropiedadController.
