@@ -4,13 +4,13 @@ Una api sencilla creada con node.js || express || mysql
 
 # 1 Instalar dependencias con 'npm install'
 
-# 2 CREAR LA DB
+# 2 Crear la DB
 
 - El archivo propiedades.sql crea la base de datos mysql (ejecutarlo)
 
 # 3 Conecta el servidor con la db:
 
-# DB || models/db.js
+DB || models/db.js
 
 ```JS
 export const connection = mysql.createConnection({
